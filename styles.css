@@ -115,30 +115,39 @@ Change colors and an animation on the buttons
 button.equals:hover {
     background: #3f4d39;
     color: #DFDFDF;
-    transform: scale(0.95);
 }
 
 button.clear:hover,
 button.clear-entry:hover {
     background: #3f4d39;
     color: #DFDFDF;
-    transform: scale(0.95);
 }
 
 button.digits:hover {
     background: #3f4d39;
     color: #DFDFDF;
-    transform: scale(0.95);
 }
 
 button.operator:hover {
     background: #3f4d39;
     color: #DFDFDF;
-    transform: scale(0.95);
 }
 
 button.decimal:hover,
 button.positive-negative:hover {
+    background: #3f4d39;
+    color: #DFDFDF;
+    /*transform: scale(0.95);*/
+}
+
+/*create press effect on buttons*/
+button.equals:active, 
+button.clear:active,
+button.clear-entry:active,
+button.digits:active,
+button.operator:active,
+button.decimal:active,
+button.positive-negative:active {
     background: #3f4d39;
     color: #DFDFDF;
     transform: scale(0.95);
