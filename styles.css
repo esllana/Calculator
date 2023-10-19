@@ -112,27 +112,11 @@ button.equals {
 Create hover effect on buttons. 
 Change colors and an animation on the buttons
 */
-button.equals:hover {
-    background: #3f4d39;
-    color: #DFDFDF;
-}
-
+button.equals:hover,
 button.clear:hover,
-button.clear-entry:hover {
-    background: #3f4d39;
-    color: #DFDFDF;
-}
-
-button.digits:hover {
-    background: #3f4d39;
-    color: #DFDFDF;
-}
-
-button.operator:hover {
-    background: #3f4d39;
-    color: #DFDFDF;
-}
-
+button.clear-entry:hover,
+button.digits:hover,
+button.operator:hover,
 button.decimal:hover,
 button.positive-negative:hover {
     background: #3f4d39;
