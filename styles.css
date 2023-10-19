@@ -92,7 +92,7 @@ output#output {
     font-size: 1.325rem;
     padding: 1rem 0;
     font-weight: 700;
-    background: #616161;
+    background: #4a5a44;
     border: 0px solid transparent;
     outline: none;
     text-decoration: none;
@@ -112,4 +112,34 @@ button.equals {
 Create hover effect on buttons. 
 Change colors and an animation on the buttons
 */
+button.equals:hover {
+    background: #3f4d39;
+    color: #DFDFDF;
+    transform: scale(0.95);
+}
 
+button.clear:hover,
+button.clear-entry:hover {
+    background: #3f4d39;
+    color: #DFDFDF;
+    transform: scale(0.95);
+}
+
+button.digits:hover {
+    background: #3f4d39;
+    color: #DFDFDF;
+    transform: scale(0.95);
+}
+
+button.operator:hover {
+    background: #3f4d39;
+    color: #DFDFDF;
+    transform: scale(0.95);
+}
+
+button.decimal:hover,
+button.positive-negative:hover {
+    background: #3f4d39;
+    color: #DFDFDF;
+    transform: scale(0.95);
+}
