@@ -21,7 +21,6 @@ body {
     text-align: center;
     margin: 5rem auto;
     margin-bottom: 2rem;
-    height: 100vh;
 }
 
 .container-child {
@@ -49,4 +48,52 @@ body {
     padding: .300rem;
     box-shadow: inset 2px 3px 5px rgba(0, 0, 0, 0.5);
     outline: none;
+}
+
+.display-output output {
+	display: block;
+	border: none;
+	outline: none;
+	width: 100%;
+}
+
+output#input {
+	font-size: 1.325rem;
+	font-weight: 400;
+	text-align: right;
+	color: var(--white);
+}
+
+output#output {
+	font-size: 1.750rem;
+	font-weight: 600;
+	text-align: right;
+	color: var(--white);
+}
+
+
+.calculator .interface-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    height: 100%;
+    grid-gap: .5rem;
+    padding: 1rem;
+    background: #278637;
+    border-bottom-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+}
+
+.interface-buttons button {
+    font-size: 1.325rem;
+    padding: 1rem 0;
+    font-weight: 700;
+    background: #616161;
+    border: 0px solid transparent;
+    outline: none;
+    text-decoration: none;
+    border-radius: 100%;
+    box-shadow: 4px 5px 5px 0px rgba(0,0,0,0.5);
+    color: #DFDFDF;
+    cursor: pointer;
+    transition: all .15s ease-in-out;
 }
