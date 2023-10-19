@@ -24,7 +24,7 @@ body {
 }
 
 .container-child {
-    max-width: 500px;
+    max-width: 350px;
     width: 100%;
 }
 
@@ -44,8 +44,8 @@ body {
     width: 100%;
     border: 0px;
     background: #16461e;
-    border-radius: .500rem;
-    padding: .300rem;
+    border-radius: .725rem;
+    padding: .15rem;
     box-shadow: inset 2px 3px 5px rgba(0, 0, 0, 0.5);
     outline: none;
 }
