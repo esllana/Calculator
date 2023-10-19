@@ -40,6 +40,7 @@ body {
     border-top-left-radius: 1rem;
 }
 
+/*create visual separation for display */
 .display .display-output {
     width: 100%;
     border: 0px;
@@ -50,6 +51,7 @@ body {
     outline: none;
 }
 
+/*create spacing for the output and input*/
 .display-output output {
 	display: block;
 	border: none;
@@ -57,6 +59,7 @@ body {
 	width: 100%;
 }
 
+/* input digit arrangement and styling */
 output#input {
 	font-size: 1.325rem;
 	font-weight: 400;
@@ -64,6 +67,7 @@ output#input {
 	color: var(--white);
 }
 
+/* output digit arrangement and styling */
 output#output {
 	font-size: 1.750rem;
 	font-weight: 600;
@@ -71,7 +75,7 @@ output#output {
 	color: var(--white);
 }
 
-
+/*grid styling on buttons and container*/
 .calculator .interface-buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -83,6 +87,7 @@ output#output {
     border-bottom-left-radius: 1rem;
 }
 
+/*styling on buttons*/
 .interface-buttons button {
     font-size: 1.325rem;
     padding: 1rem 0;
@@ -97,3 +102,14 @@ output#output {
     cursor: pointer;
     transition: all .15s ease-in-out;
 }
+
+button.equals {
+	grid-column: 3 / 5;
+	border-radius: 2.5rem;
+}
+
+/* 
+Create hover effect on buttons. 
+Change colors and an animation on the buttons
+*/
+
