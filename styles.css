@@ -75,28 +75,58 @@ output#output {
 	color: var(--white);
 }
 
+.casio {
+    text-align: left;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #16461e;
+    border: 0px;
+    margin-left: 1rem;
+    margin-top: .5rem;
+    margin-bottom: -40px;
+}
+
 /*grid styling on buttons and container*/
 .calculator .interface-buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     height: 100%;
     grid-gap: .5rem;
-    padding: 1rem;
+    padding: 2rem;
     background: #278637;
     border-bottom-right-radius: 1rem;
     border-bottom-left-radius: 1rem;
 }
 
 /*styling on buttons*/
-.interface-buttons button {
+.digits, .operator, .decimal, .equals, .positive-negative {
     font-size: 1.325rem;
-    padding: 1rem 0;
-    font-weight: 700;
-    background: #4a5a44;
+    padding: .5rem 0;
+    font-weight: 900;
+    background: #555a44;
     border: 0px solid transparent;
     outline: none;
     text-decoration: none;
-    border-radius: 100%;
+    border-radius: 10px;
+    width: 4rem;
+    height: 4rem;
+    box-shadow: 4px 5px 5px 0px rgba(0,0,0,0.5);
+    color: #DFDFDF;
+    cursor: pointer;
+    transition: all .15s ease-in-out;
+}
+
+.clear, .clear-entry {
+    font-size: 1.325rem;
+    padding: .5rem 0;
+    font-weight: 900;
+    background: #c58a0c;
+    border: 0px solid transparent;
+    outline: none;
+    text-decoration: none;
+    border-radius: 10px;
+    width: 4rem;
+    height: 4rem;
     box-shadow: 4px 5px 5px 0px rgba(0,0,0,0.5);
     color: #DFDFDF;
     cursor: pointer;
@@ -105,7 +135,9 @@ output#output {
 
 button.equals {
 	grid-column: 3 / 5;
-	border-radius: 2.5rem;
+	border-radius: 10px;
+    width: 8.7rem;
+    height: 4rem;
 }
 
 /* 
@@ -113,8 +145,6 @@ Create hover effect on buttons.
 Change colors and an animation on the buttons
 */
 button.equals:hover,
-button.clear:hover,
-button.clear-entry:hover,
 button.digits:hover,
 button.operator:hover,
 button.decimal:hover,
@@ -124,10 +154,14 @@ button.positive-negative:hover {
     /*transform: scale(0.95);*/
 }
 
+button.clear:hover,
+button.clear-entry:hover {
+    background-color: #835c09;
+    color: #DFDFDF;
+}
+
 /*create press effect on buttons*/
 button.equals:active, 
-button.clear:active,
-button.clear-entry:active,
 button.digits:active,
 button.operator:active,
 button.decimal:active,
@@ -135,4 +169,18 @@ button.positive-negative:active {
     background: #3f4d39;
     color: #DFDFDF;
     transform: scale(0.95);
+}
+
+button.clear:active,
+button.clear-entry:active {
+    background-color: #835c09;
+    color: #DFDFDF;
+    transform: scale(0.95);
+}
+
+footer {
+    text-align: center;
+    color: var(--white);
+    font-size: 1.325rem;
+    margin-top: 5rem;
 }
