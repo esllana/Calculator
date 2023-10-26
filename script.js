@@ -19,8 +19,6 @@ allButtons.addEventListener('click', function(event) {
     }
 });
 
-
-
 //function to add the buttons to the display
 function addToDisplayDigit(digit) {
     if (display.value === "0") {
@@ -43,18 +41,18 @@ function addToDisplayEquals(equals) {
 }
 
 function addToDisplayOperator(operator) {
-    if (display.value === "0") {
-        //If it is '0', replace it with the clicked digit
-        display.value = operator;
-    } else if (!display.value.includes(operator)) {
-        // If the display doesn't already contain the operator, append it
+    // List of valid operators
+    const validOperators = ['+', '-', 'x', '÷'];
+
+    // Check if the display contains a valid operator
+    if (validOperators.includes(display.value.charAt(display.value.length - 1))) {
+        // Replace the existing operator with the new operator
+        display.value = display.value.slice(0, -1) + operator;
+    } else {
+        // If no valid operator is present, append the new operator
         display.value += operator;
-    } 
+    }
 }
-
-
-
-
 //create 3 variables to store the 2 digits and an operator
 let firstNumber = "";
 let secondNumber = "";
