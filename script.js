@@ -1,10 +1,10 @@
 
 //create references to the buttons and display
 const display = document.getElementById('input');
-const digitButtons = document.getElementById('all-buttons');
+const allButtons = document.getElementById('all-buttons');
 
 //create a function that populates the display when buttons clicked
-digitButtons.addEventListener('click', function(event) {
+allButtons.addEventListener('click', function(event) {
     if (event.target.classList.contains('digits')) {
         //get the digit from the button that was clicked
         const digit = event.target.textContent;
@@ -13,7 +13,16 @@ digitButtons.addEventListener('click', function(event) {
     }
 });
 
-//function to add a digit to the display
+allButtons.addEventListener('click', function(event) {
+    if (event.target.classList.contains('operator')) {
+        //get the operator from the button that was clicked
+        const operator = event.target.textContent;
+        //call the addToDisplay function with the operator
+        addOperator(operator);
+    }
+});
+
+//function to add a buttons to the display
 function addToDisplay(digit) {
     if (display.value === "0") {
         //If it is '0', replace it with the clicked digit
@@ -21,6 +30,16 @@ function addToDisplay(digit) {
     } else {
         //Otherwise, append the digit to what is already on the display
         display.value += digit;
+    }
+}
+
+function addOperator(operator) {
+    if (display.value === "0") {
+        //If it is '0', replace it with the clicked digit
+        display.value = operator;
+    } else {
+        //Otherwise, append the digit to what is already on the display
+        display.value += operator;
     }
 }
 
