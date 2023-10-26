@@ -5,43 +5,55 @@ const allButtons = document.getElementById('all-buttons');
 
 //create a function that populates the display when buttons clicked
 allButtons.addEventListener('click', function(event) {
-    if (event.target.classList.contains('digits')) {
-        //get the digit from the button that was clicked
-        const digit = event.target.textContent;
-        //call the addToDisplay function with the digit
-        addToDisplay(digit);
+    const clickedButton = event.target;
+
+    if(clickedButton.classList.contains('digits')) {
+        const digit = clickedButton.textContent;
+        addToDisplayDigit(digit);
+    } else if (clickedButton.classList.contains('operator')) {
+        const operator = clickedButton.textContent;
+        addToDisplayOperator(operator);
+    } else if (clickedButton.classList.contains('equals')) {
+        const equals = clickedButton.textContent;
+        addToDisplayEquals(equals);
     }
 });
 
-allButtons.addEventListener('click', function(event) {
-    if (event.target.classList.contains('operator')) {
-        //get the operator from the button that was clicked
-        const operator = event.target.textContent;
-        //call the addToDisplay function with the operator
-        addOperator(operator);
-    }
-});
 
-//function to add a buttons to the display
-function addToDisplay(digit) {
+
+//function to add the buttons to the display
+function addToDisplayDigit(digit) {
     if (display.value === "0") {
         //If it is '0', replace it with the clicked digit
         display.value = digit;
     } else {
         //Otherwise, append the digit to what is already on the display
         display.value += digit;
-    }
+    } 
 }
 
-function addOperator(operator) {
+function addToDisplayEquals(equals) {
+    if (display.value === "0") {
+        //If it is '0', replace it with the clicked digit
+        display.value = equals;
+    } else if (!display.value.includes(equals)){
+        //Otherwise, append the digit to what is already on the display
+        display.value += equals;
+    } 
+}
+
+function addToDisplayOperator(operator) {
     if (display.value === "0") {
         //If it is '0', replace it with the clicked digit
         display.value = operator;
-    } else {
-        //Otherwise, append the digit to what is already on the display
+    } else if (!display.value.includes(operator)) {
+        // If the display doesn't already contain the operator, append it
         display.value += operator;
-    }
+    } 
 }
+
+
+
 
 //create 3 variables to store the 2 digits and an operator
 let firstNumber = "";
