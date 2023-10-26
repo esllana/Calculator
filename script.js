@@ -3,7 +3,7 @@
 const display = document.getElementById('input');
 const allButtons = document.getElementById('all-buttons');
 
-//create a function that populates the display when buttons clicked
+//create an event listener on the container of the buttons
 allButtons.addEventListener('click', function(event) {
     const clickedButton = event.target;
 
@@ -16,6 +16,10 @@ allButtons.addEventListener('click', function(event) {
     } else if (clickedButton.classList.contains('equals')) {
         const equals = clickedButton.textContent;
         addToDisplayEquals(equals);
+    } else if (clickedButton.classList.contains('clear')) {
+        display.value = "0";
+    } else if (clickedButton.classList.contains('clear-entry')) {
+        clearEntry();
     }
 });
 
@@ -51,6 +55,16 @@ function addToDisplayOperator(operator) {
     } else {
         // If no valid operator is present, append the new operator
         display.value += operator;
+    }
+}
+
+function clearEntry() {
+    // If there's only one digit, set it to '0'
+    if (display.value.length === 1) {
+        display.value = '0';
+    } else {
+        // Remove the last character
+        display.value = display.value.slice(0, -1);
     }
 }
 //create 3 variables to store the 2 digits and an operator
