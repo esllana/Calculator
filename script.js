@@ -4,6 +4,7 @@ const allButtons = document.getElementById('all-buttons');
 
 // Create a variable to store the numbers
 let firstNumber = '';
+let operator = '';
 
 //create an event listener on the container of the buttons
 allButtons.addEventListener('click', function(event) {
@@ -54,13 +55,15 @@ function addToDisplayOperator(operator) {
     const validOperators = ['+', '-', 'x', '÷'];
 
     // Check if the display contains a valid operator
-    if (validOperators.includes(display.value.charAt(display.value.length - 1))) {
+    if (firstNumber !== '' && validOperators.includes(display.value.charAt(display.value.length - 1))) {
         // Replace the existing operator with the new operator
         display.value = display.value.slice(0, -1) + operator;
     } else {
         // If no valid operator is present, append the new operator
         display.value += operator;
+        operator = operator; // Store the operator
     }
+    console.log('operator:', operator);
 }
 
 function clearEntry() {
