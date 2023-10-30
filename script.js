@@ -1,7 +1,9 @@
-
 //create references to the buttons and display
 const display = document.getElementById('input');
 const allButtons = document.getElementById('all-buttons');
+
+// Create a variable to store the numbers
+let firstNumber = '';
 
 //create an event listener on the container of the buttons
 allButtons.addEventListener('click', function(event) {
@@ -28,10 +30,13 @@ function addToDisplayDigit(digit) {
     if (display.value === "0") {
         //If it is '0', replace it with the clicked digit
         display.value = digit;
+        firstNumber = digit; // Store the first number
     } else {
         //Otherwise, append the digit to what is already on the display
         display.value += digit;
+        firstNumber += digit;
     } 
+    console.log('firstNumber:', firstNumber);
 }
 
 function addToDisplayEquals(equals) {
@@ -67,12 +72,3 @@ function clearEntry() {
         display.value = display.value.slice(0, -1);
     }
 }
-//create 3 variables to store the 2 digits and an operator
-let firstNumber = "";
-let secondNumber = "";
-let operator = "";
-
-
-
-//create a function called operate that takes an operator and 2 numbers and then calls a function on the numbers
-//display the result in the output display
