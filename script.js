@@ -4,29 +4,51 @@ const allButtons = document.getElementById('all-buttons');
 
 // Create a variable to store the numbers
 let firstNumber = '';
-let operator = '';
+let currentOperator = '';
+let secondNumber = '';
 
 //create an event listener on the container of the buttons
 allButtons.addEventListener('click', function(event) {
     const clickedButton = event.target;
 
-    if(clickedButton.classList.contains('digits')) {
+    if (clickedButton.classList.contains('digits')) {
         const digit = clickedButton.textContent;
-        addToDisplayDigit(digit);
+        if (currentOperator === '') {
+            // If no operator has been set, append digits to the first number
+            firstNumber += digit;
+        } else {
+            // If an operator is set, append digits to the second number
+            secondNumber += digit;
+        }
+        updateDisplay();
+        console.log('firstNumber:', firstNumber);
+        console.log('secondNumber:', secondNumber);
     } else if (clickedButton.classList.contains('operator')) {
         const operator = clickedButton.textContent;
-        addToDisplayOperator(operator);
+        if (currentOperator === '') {
+            // Set the operator if it's not already set
+            currentOperator = operator;
+        } else {
+            //TODO Execute operate fx if an operator is already set
+            currentOperator = operator; // Set the new operator
+        }
+        console.log('currentOperator:', currentOperator);
     } else if (clickedButton.classList.contains('equals')) {
         const equals = clickedButton.textContent;
         addToDisplayEquals(equals);
     } else if (clickedButton.classList.contains('clear')) {
-        display.value = "0";
+        clear();
     } else if (clickedButton.classList.contains('clear-entry')) {
         clearEntry();
     }
 });
 
-//function to add the buttons to the display
+// Function to update the display with the current numbers and operator
+function updateDisplay() {
+    display.value = firstNumber + currentOperator + secondNumber;
+}
+
+/*DEPRECATED //!DEPRECATED
 function addToDisplayDigit(digit) {
     if (display.value === "0") {
         //If it is '0', replace it with the clicked digit
@@ -35,10 +57,10 @@ function addToDisplayDigit(digit) {
     } else {
         //Otherwise, append the digit to what is already on the display
         display.value += digit;
-        firstNumber += digit;
+        firstNumber += digit; // Store the first number
     } 
     console.log('firstNumber:', firstNumber);
-}
+}*/
 
 function addToDisplayEquals(equals) {
     if (display.value === "0") {
@@ -66,6 +88,17 @@ function addToDisplayOperator(operator) {
     console.log('operator:', operator);
 }
 
+function clear() {
+    // Clear all the variables
+    firstNumber = '';
+    currentOperator = '';
+    secondNumber = '';
+
+    // Clear the display
+    display.value = '0';
+}
+
+//TODO Review this function
 function clearEntry() {
     // If there's only one digit, set it to '0'
     if (display.value.length === 1) {
@@ -75,3 +108,5 @@ function clearEntry() {
         display.value = display.value.slice(0, -1);
     }
 }
+
+//create a function operate to calculate the result called with equals button
