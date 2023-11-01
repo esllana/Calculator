@@ -28,10 +28,7 @@ allButtons.addEventListener('click', function(event) {
         if (currentOperator === '') {
             // Set the operator if it's not already set
             currentOperator = operator;
-        } else {
-            //TODO Execute operate fx if an operator is already set
-            currentOperator = operator; // Set the new operator
-        }
+        } 
         console.log('currentOperator:', currentOperator);
     } else if (clickedButton.classList.contains('equals')) {
         const equals = clickedButton.textContent;
@@ -97,6 +94,16 @@ function clear() {
     // Clear the display
     display.value = '0';
 }
+
+//TODO Execute operate fx if an operator is already set
+function operate(firstNumber, currentOperator, secondNumber) {
+    if (currentOperator === '+') {
+        return firstNumber + secondNumber;
+    }
+    
+}
+const additionResult = operate(firstNumber, currentOperator, secondNumber);
+console.log('additionResult:', additionResult);
 
 //TODO Review this function
 function clearEntry() {
