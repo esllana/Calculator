@@ -101,6 +101,13 @@ function clearEntry() {
     } else {
         // Remove the last character
         display.value = display.value.slice(0, -1);
+        if (currentOperator === '') {
+            // If no operator is set, remove the last digit from the first number
+            firstNumber = firstNumber.slice(0, -1);
+        } else {
+            // If an operator is set, remove the last digit from the second number
+            secondNumber = secondNumber.slice(0, -1);
+        }
     }
 }
 
