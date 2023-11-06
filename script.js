@@ -28,6 +28,9 @@ allButtons.addEventListener('click', function(event) {
         if (currentOperator === '') {
             // Set the operator if it's not already set
             currentOperator = operator;
+        } else {
+            // Replace the existing operator with the new operator
+            currentOperator = operator;
         }
         updateDisplay(); 
         console.log('currentOperator:', currentOperator);
@@ -43,8 +46,13 @@ allButtons.addEventListener('click', function(event) {
 
 // Function to update the display with the current numbers and operator
 function updateDisplay() {
-    display.value = firstNumber + currentOperator + secondNumber;
+    // Define valid operators
+    const validOperators = ['+', '-', '*', '/', 'x', '÷'];
+    display.value = validOperators.includes(currentOperator)
+    ? firstNumber + currentOperator + secondNumber  // Display the numbers and operator if valid
+    : firstNumber; // Display only the numbers if the operator is not valid
 }
+
 
 function addToDisplayEquals(equals) {
     if (display.value === "0") {
@@ -55,7 +63,7 @@ function addToDisplayEquals(equals) {
         display.value += equals;
     } 
 }
-
+/* 
 function addToDisplayOperator(operator) {
     // List of valid operators
     const validOperators = ['+', '-', 'x', '÷'];
@@ -70,7 +78,7 @@ function addToDisplayOperator(operator) {
         operator = operator; // Store the operator
     }
     console.log('operator:', operator);
-}
+}*/
 
 function clear() {
     // Clear all the variables
@@ -80,6 +88,20 @@ function clear() {
 
     // Clear the display
     display.value = '0';
+}
+
+//TODO Review this function
+function clearEntry() {
+    // If there's only one digit, set it to '0'
+    if (display.value.length === 1) {
+        display.value = '0';
+        firstNumber = '';
+        currentOperator = '';
+        secondNumber = '';
+    } else {
+        // Remove the last character
+        display.value = display.value.slice(0, -1);
+    }
 }
 
 //TODO Execute operate fx if an operator is already set
@@ -92,15 +114,7 @@ function operate(firstNumber, currentOperator, secondNumber) {
 const additionResult = operate(firstNumber, currentOperator, secondNumber);
 console.log('additionResult:', additionResult);
 
-//TODO Review this function
-function clearEntry() {
-    // If there's only one digit, set it to '0'
-    if (display.value.length === 1) {
-        display.value = '0';
-    } else {
-        // Remove the last character
-        display.value = display.value.slice(0, -1);
-    }
-}
 
-//create a function operate to calculate the result called with equals button
+
+//add keyboard support
+
