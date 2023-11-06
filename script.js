@@ -28,7 +28,8 @@ allButtons.addEventListener('click', function(event) {
         if (currentOperator === '') {
             // Set the operator if it's not already set
             currentOperator = operator;
-        } 
+        }
+        updateDisplay(); 
         console.log('currentOperator:', currentOperator);
     } else if (clickedButton.classList.contains('equals')) {
         const equals = clickedButton.textContent;
@@ -44,20 +45,6 @@ allButtons.addEventListener('click', function(event) {
 function updateDisplay() {
     display.value = firstNumber + currentOperator + secondNumber;
 }
-
-/*DEPRECATED //!DEPRECATED
-function addToDisplayDigit(digit) {
-    if (display.value === "0") {
-        //If it is '0', replace it with the clicked digit
-        display.value = digit;
-        firstNumber = digit; // Store the first number
-    } else {
-        //Otherwise, append the digit to what is already on the display
-        display.value += digit;
-        firstNumber += digit; // Store the first number
-    } 
-    console.log('firstNumber:', firstNumber);
-}*/
 
 function addToDisplayEquals(equals) {
     if (display.value === "0") {
