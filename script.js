@@ -41,6 +41,16 @@ allButtons.addEventListener('click', function(event) {
         clear();
     } else if (clickedButton.classList.contains('clear-entry')) {
         clearEntry();
+    } else if (clickedButton.classList.contains('decimal')) {
+        const decimal = clickedButton.textContent;
+        if (currentOperator === '') {
+            // If no operator has been set, append decimal to the first number
+            firstNumber += decimal;
+        } else {
+            // If an operator is set, append decimal to the second number
+            secondNumber += decimal;
+        }
+        updateDisplay();
     }
 });
 
@@ -63,22 +73,10 @@ function addToDisplayEquals(equals) {
         display.value += equals;
     } 
 }
-/* 
-function addToDisplayOperator(operator) {
-    // List of valid operators
-    const validOperators = ['+', '-', 'x', '÷'];
 
-    // Check if the display contains a valid operator
-    if (firstNumber !== '' && validOperators.includes(display.value.charAt(display.value.length - 1))) {
-        // Replace the existing operator with the new operator
-        display.value = display.value.slice(0, -1) + operator;
-    } else {
-        // If no valid operator is present, append the new operator
-        display.value += operator;
-        operator = operator; // Store the operator
-    }
-    console.log('operator:', operator);
-}*/
+//add decimal functionality
+
+
 
 function clear() {
     // Clear all the variables
@@ -90,9 +88,8 @@ function clear() {
     display.value = '0';
 }
 
-//TODO Review this function
 function clearEntry() {
-    // If there's only one digit, set it to '0'
+    // If there's only one digit, set it to '0' and clear variables
     if (display.value.length === 1) {
         display.value = '0';
         firstNumber = '';
