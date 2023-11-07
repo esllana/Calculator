@@ -44,6 +44,10 @@ allButtons.addEventListener('click', function(event) {
     } else if (clickedButton.classList.contains('decimal')) {
         const decimal = clickedButton.textContent;
         if (currentOperator === '') {
+            if (firstNumber.includes(decimal)) {
+                // If the first number already includes a decimal, do nothing
+                return;
+            }
             // If no operator has been set, append decimal to the first number
             firstNumber += decimal;
         } else {
@@ -51,6 +55,9 @@ allButtons.addEventListener('click', function(event) {
             secondNumber += decimal;
         }
         updateDisplay();
+    } else if (clickedButton.classList.contains('positive-negative')) {
+        //TODO add toggle for positive/negative
+
     }
 });
 
@@ -73,10 +80,6 @@ function addToDisplayEquals(equals) {
         display.value += equals;
     } 
 }
-
-//add decimal functionality
-
-
 
 function clear() {
     // Clear all the variables
