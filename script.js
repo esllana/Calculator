@@ -95,6 +95,7 @@ function clear() {
     display.value = '0';
 }
 
+//TODO clear entry the operator too
 function clearEntry() {
     // If there's only one digit, set it to '0' and clear variables
     if (display.value.length === 1) {
@@ -109,9 +110,13 @@ function clearEntry() {
             // If no operator is set, remove the last digit from the first number
             firstNumber = firstNumber.slice(0, -1);
         } else {
+            // empty the operator variable when secondNumber is empty
+            if (secondNumber.length === 0) {
+                currentOperator = '';
+            }
             // If an operator is set, remove the last digit from the second number
             secondNumber = secondNumber.slice(0, -1);
-        }
+        } 
     }
 }
 
