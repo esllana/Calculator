@@ -61,7 +61,10 @@ allButtons.addEventListener('click', function(event) {
         updateDisplay();
     } else if (clickedButton.classList.contains('positive-negative')) {
         //TODO add toggle for positive/negative
-
+        if (currentOperator === '') {
+            firstNumber = (firstNumber * -1).toString();
+        }
+        updateDisplay();
     }
 });
 
@@ -95,7 +98,6 @@ function clear() {
     display.value = '0';
 }
 
-//TODO clear entry the operator too
 function clearEntry() {
     // If there's only one digit, set it to '0' and clear variables
     if (display.value.length === 1) {
@@ -120,7 +122,7 @@ function clearEntry() {
     }
 }
 
-//TODO Execute operate fx if an operator is already set
+//TODO Execute operate fx when equals button is pressed
 function operate(firstNumber, currentOperator, secondNumber) {
     if (currentOperator === '+') {
         return firstNumber + secondNumber;
