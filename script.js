@@ -51,6 +51,10 @@ allButtons.addEventListener('click', function(event) {
             // If no operator has been set, append decimal to the first number
             firstNumber += decimal;
         } else {
+            if (secondNumber.includes(decimal)) {
+                // If the second number already includes a decimal, do nothing
+                return;
+            }
             // If an operator is set, append decimal to the second number
             secondNumber += decimal;
         }
