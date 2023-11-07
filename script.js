@@ -63,6 +63,8 @@ allButtons.addEventListener('click', function(event) {
         //TODO add toggle for positive/negative
         if (currentOperator === '') {
             firstNumber = (firstNumber * -1).toString();
+        } else {
+            secondNumber = (secondNumber * -1).toString();
         }
         updateDisplay();
     }
