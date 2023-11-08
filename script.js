@@ -35,8 +35,7 @@ allButtons.addEventListener('click', function(event) {
         updateDisplay(); 
         console.log('currentOperator:', currentOperator);
     } else if (clickedButton.classList.contains('equals')) {
-        const equals = clickedButton.textContent;
-        addToDisplayEquals(equals);
+        operate();
     } else if (clickedButton.classList.contains('clear')) {
         clear();
     } else if (clickedButton.classList.contains('clear-entry')) {
@@ -80,6 +79,7 @@ function updateDisplay() {
 }
 
 
+/* //!DEPRECATED 
 function addToDisplayEquals(equals) {
     if (display.value === "0") {
         //If it is '0', replace it with the clicked digit
@@ -88,7 +88,7 @@ function addToDisplayEquals(equals) {
         //Otherwise, append the digit to what is already on the display
         display.value += equals;
     } 
-}
+}*/
 
 function clear() {
     // Clear all the variables
@@ -125,16 +125,16 @@ function clearEntry() {
 }
 
 //TODO Execute operate fx when equals button is pressed
-function operate(firstNumber, currentOperator, secondNumber) {
-    if (currentOperator === '+') {
-        return firstNumber + secondNumber;
-    }
-    
-}
-const additionResult = operate(firstNumber, currentOperator, secondNumber);
-console.log('additionResult:', additionResult);
+function operate() {
+    let result = 0;
 
+    if (currentOperator === '+') {
+        result = parseFloat(firstNumber) + parseFloat(secondNumber);
+    }
+
+    const outputDisplay = document.getElementById('output');
+    outputDisplay.textContent = result;
+}
 
 
 //add keyboard support
-
