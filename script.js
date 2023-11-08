@@ -99,7 +99,7 @@ function clear() {
 
     // Clear the display
     display.value = '0';
-    output.value = '0';
+    output.value = ' ';
 }
 
 function clearEntry() {
@@ -133,6 +133,18 @@ function operate() {
 
     if (currentOperator === '+') {
         result = parseFloat(firstNumber) + parseFloat(secondNumber);
+    }
+
+    if (currentOperator === '-') {
+        result = parseFloat(firstNumber) - parseFloat(secondNumber);
+    }
+
+    if (currentOperator === 'x' || currentOperator === '*') {
+        result = parseFloat(firstNumber) * parseFloat(secondNumber);
+    }
+
+    if (currentOperator === '÷' || currentOperator === '/') {
+        result = parseFloat(firstNumber) / parseFloat(secondNumber);
     }
     //TODO add other operators
     //TODO should be able to use several operations and get right answer (e.g. 12+7-5*3=42)
