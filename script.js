@@ -35,6 +35,7 @@ allButtons.addEventListener('click', function(event) {
         updateDisplay(); 
         console.log('currentOperator:', currentOperator);
     } else if (clickedButton.classList.contains('equals')) {
+        display.textContent += '='; 
         operate();
     } else if (clickedButton.classList.contains('clear')) {
         clear();
@@ -74,7 +75,7 @@ function updateDisplay() {
     // Define valid operators
     const validOperators = ['+', '-', '*', '/', 'x', '÷'];
     display.value = validOperators.includes(currentOperator)
-    ? firstNumber + currentOperator + secondNumber  // Display the numbers and operator if valid
+    ? firstNumber + currentOperator + secondNumber // Display the numbers and operator if valid
     : firstNumber; // Display only the numbers if the operator is not valid
 }
 
@@ -98,6 +99,7 @@ function clear() {
 
     // Clear the display
     display.value = '0';
+    output.value = '0';
 }
 
 function clearEntry() {
@@ -142,6 +144,7 @@ function operate() {
     const outputDisplay = document.getElementById('output');
     outputDisplay.textContent = result;
 }
+
 
 
 //add keyboard support
