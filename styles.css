@@ -43,6 +43,7 @@ body {
 /*create visual separation for display */
 .display .display-output {
     width: 100%;
+    height: 5rem;
     border: 0px;
     background: #16461e;
     border-radius: .725rem;
