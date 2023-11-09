@@ -69,15 +69,17 @@ allButtons.addEventListener('click', function(event) {
         updateDisplay();
     } else if (clickedButton.classList.contains('positive-negative')) {
         if (result !== '') {
-            result = (result * -1).toString();
+            result = parseFloat(result * -1);
             const outputDisplay = document.getElementById('output');
             outputDisplay.textContent = result;
         } else if (currentOperator === '') {
             firstNumber = (firstNumber * -1).toString();
             updateDisplay();
+            console.log('firstNumber:', firstNumber);
         } else {
             secondNumber = (secondNumber * -1).toString();
             updateDisplay();
+            console.log('secondNumber:', secondNumber);
         }
     }
 });
