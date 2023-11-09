@@ -35,8 +35,11 @@ allButtons.addEventListener('click', function(event) {
         updateDisplay(); 
         console.log('currentOperator:', currentOperator);
     } else if (clickedButton.classList.contains('equals')) {
-        display.textContent += '='; 
-        operate();
+        // Check if equals sign is already present
+        if (!display.textContent.includes('=')) {
+            display.textContent += '=';
+            operate();
+        }
     } else if (clickedButton.classList.contains('clear')) {
         clear();
     } else if (clickedButton.classList.contains('clear-entry')) {
@@ -146,6 +149,10 @@ function operate() {
     if (currentOperator === '÷' || currentOperator === '/') {
         result = parseFloat(firstNumber) / parseFloat(secondNumber);
     }
+    //enable consecutive equals button presses
+
+
+
     //TODO add other operators
     //TODO should be able to use several operations and get right answer (e.g. 12+7-5*3=42)
     //TODO should round answers with long decimals (e.g. 12.3 / 7.2 = 1.7)
