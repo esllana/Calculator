@@ -1,11 +1,13 @@
 //create references to the buttons and display
 const display = document.getElementById('input');
 const allButtons = document.getElementById('all-buttons');
+const buttonEquals = document.querySelector('.equals');
 
 // Create a variable to store the numbers
 let firstNumber = '';
 let currentOperator = '';
 let secondNumber = '';
+let result = '';
 
 //create an event listener on the container of the buttons
 allButtons.addEventListener('click', function(event) {
@@ -73,6 +75,8 @@ allButtons.addEventListener('click', function(event) {
     }
 });
 
+
+
 // Function to update the display with the current numbers and operator
 function updateDisplay() {
     // Define valid operators
@@ -81,18 +85,6 @@ function updateDisplay() {
     ? firstNumber + currentOperator + secondNumber // Display the numbers and operator if valid
     : firstNumber; // Display only the numbers if the operator is not valid
 }
-
-
-/* //!DEPRECATED 
-function addToDisplayEquals(equals) {
-    if (display.value === "0") {
-        //If it is '0', replace it with the clicked digit
-        display.value = equals;
-    } else if (!display.value.includes(equals)){
-        //Otherwise, append the digit to what is already on the display
-        display.value += equals;
-    } 
-}*/
 
 function clear() {
     // Clear all the variables
@@ -130,39 +122,29 @@ function clearEntry() {
 }
 
 //Execute operate fx when equals button is pressed
+// Function to perform the calculation
 function operate() {
-    //variable for storing result
-    let result = 0;
-
     if (currentOperator === '+') {
         result = parseFloat(firstNumber) + parseFloat(secondNumber);
-    }
-
-    if (currentOperator === '-') {
+    } else if (currentOperator === '-') {
         result = parseFloat(firstNumber) - parseFloat(secondNumber);
-    }
-
-    if (currentOperator === 'x' || currentOperator === '*') {
+    } else if (currentOperator === 'x' || currentOperator === '*') {
         result = parseFloat(firstNumber) * parseFloat(secondNumber);
-    }
-
-    if (currentOperator === '÷' || currentOperator === '/') {
+    } else if (currentOperator === '÷' || currentOperator === '/') {
         result = parseFloat(firstNumber) / parseFloat(secondNumber);
     }
-    //enable consecutive equals button presses
 
-
-
-    //TODO add other operators
+    // Update the display
+    const outputDisplay = document.getElementById('output');
+    outputDisplay.textContent = result;
+    console.log('result:', result);
+}
     //TODO should be able to use several operations and get right answer (e.g. 12+7-5*3=42)
     //TODO should round answers with long decimals (e.g. 12.3 / 7.2 = 1.7)
     //TODO add error handling for divide by zero
     //TODO add error handling for invalid input
     //TODO add error handling for too many digits
-    // Find the HTML element with the id 'output' and set its text content to the calculated result.
-    const outputDisplay = document.getElementById('output');
-    outputDisplay.textContent = result;
-}
+
 
 
 
