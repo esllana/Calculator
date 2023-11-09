@@ -134,10 +134,10 @@ output#output {
     transition: all .15s ease-in-out;
 }
 
-button.equals {
+button#equals {
 	grid-column: 3 / 5;
 	border-radius: 10px;
-    width: 8.7rem;
+    width: 8.5rem;
     height: 4rem;
 }
 
