@@ -9,6 +9,7 @@ let currentOperator = '';
 let secondNumber = '';
 let result = '';
 
+
 //create an event listener on the container of the buttons
 allButtons.addEventListener('click', function(event) {
     const clickedButton = event.target;
@@ -39,8 +40,10 @@ allButtons.addEventListener('click', function(event) {
     } else if (clickedButton.classList.contains('equals')) {
         // Check if equals sign is already present
         if (!display.textContent.includes('=')) {
+            // Display the equals sign
             display.textContent += '=';
-            operate();
+
+            operate();  
         }
     } else if (clickedButton.classList.contains('clear')) {
         clear();
@@ -65,13 +68,17 @@ allButtons.addEventListener('click', function(event) {
         }
         updateDisplay();
     } else if (clickedButton.classList.contains('positive-negative')) {
-        //TODO add toggle for positive/negative
-        if (currentOperator === '') {
+        if (result !== '') {
+            result = (result * -1).toString();
+            const outputDisplay = document.getElementById('output');
+            outputDisplay.textContent = result;
+        } else if (currentOperator === '') {
             firstNumber = (firstNumber * -1).toString();
+            updateDisplay();
         } else {
             secondNumber = (secondNumber * -1).toString();
+            updateDisplay();
         }
-        updateDisplay();
     }
 });
 
@@ -91,6 +98,7 @@ function clear() {
     firstNumber = '';
     currentOperator = '';
     secondNumber = '';
+    result = '';
 
     // Clear the display
     display.value = '0';
@@ -122,7 +130,6 @@ function clearEntry() {
 }
 
 //Execute operate fx when equals button is pressed
-// Function to perform the calculation
 function operate() {
     if (currentOperator === '+') {
         result = parseFloat(firstNumber) + parseFloat(secondNumber);
@@ -144,6 +151,8 @@ function operate() {
     //TODO add error handling for divide by zero
     //TODO add error handling for invalid input
     //TODO add error handling for too many digits
+
+// Repeat the previous operation with the result as the first and second numbers
 
 
 
