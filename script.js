@@ -39,28 +39,18 @@ allButtons.addEventListener('click', function(event) {
         updateDisplay(); 
         console.log('currentOperator:', currentOperator);
     } else if (clickedButton.classList.contains('equals')) {
-        // Check if equals sign is already present
-        if (!display.textContent.includes('=')) {
-            // Display the equals sign
-            display.textContent += '=';
-
-            operate(); 
-            
-            equalsPressCount++; 
-            console.log('equalsPressCount:', equalsPressCount);
-        } else if (equalsPressCount >=1) { //TODO consecutive equals operation
-             
-
+        operate(); 
+        equalsPressCount++; 
+        console.log('equalsPressCount:', equalsPressCount);
+        //consecutive equals operation
+        if (equalsPressCount >= 2) { 
             firstNumber = result;
             currentOperator = currentOperator;
-            secondNumber = result;
+            secondNumber = secondNumber;
             
             operate();
-
             updateDisplay();
-            
-        }
-
+        }  
     } else if (clickedButton.classList.contains('clear')) {
         clear();
     } else if (clickedButton.classList.contains('clear-entry')) {
@@ -100,15 +90,15 @@ allButtons.addEventListener('click', function(event) {
     }
 });
 
+//TODO Display equal sign when pressed
 // Function to update the display with the current numbers and operator
 function updateDisplay() {
     // Define valid operators
     const validOperators = ['+', '-', '*', '/', 'x', '÷'];
     display.value = validOperators.includes(currentOperator)
-    ? firstNumber + currentOperator + secondNumber // Display the numbers and operator if valid
-    : firstNumber; // Display only the numbers if the operator is not valid
+        ? firstNumber + currentOperator + secondNumber // Display the numbers and operator if valid
+        : firstNumber + (equalsPressCount === 0 ? '' : '='); // Display only the numbers or with equals if the operator is not valid
 }
-
 function clear() {
     // Clear all the variables
     firstNumber = '';
