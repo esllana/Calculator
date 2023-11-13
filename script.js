@@ -8,6 +8,7 @@ let firstNumber = '';
 let currentOperator = '';
 let secondNumber = '';
 let result = '';
+let equalsPressCount = 0;
 
 
 //create an event listener on the container of the buttons
@@ -43,10 +44,13 @@ allButtons.addEventListener('click', function(event) {
             // Display the equals sign
             display.textContent += '=';
 
-            operate();  
-        }
-        //consecutive equals operation
-        if (clickedButton.classList.contains('equals') && result !== '') {
+            operate(); 
+            
+            equalsPressCount++; 
+            console.log('equalsPressCount:', equalsPressCount);
+        } else if (equalsPressCount >=1) { //TODO consecutive equals operation
+             
+
             firstNumber = result;
             currentOperator = currentOperator;
             secondNumber = result;
@@ -54,8 +58,9 @@ allButtons.addEventListener('click', function(event) {
             operate();
 
             updateDisplay();
- 
+            
         }
+
     } else if (clickedButton.classList.contains('clear')) {
         clear();
     } else if (clickedButton.classList.contains('clear-entry')) {
@@ -110,6 +115,7 @@ function clear() {
     currentOperator = '';
     secondNumber = '';
     result = '';
+    equalsPressCount = 0;
 
     // Clear the display
     display.value = '0';
