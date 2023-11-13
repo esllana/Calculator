@@ -34,7 +34,7 @@ allButtons.addEventListener('click', function(event) {
         } else {
             // Replace the existing operator with the new operator
             currentOperator = operator;
-        }
+        } 
         updateDisplay(); 
         console.log('currentOperator:', currentOperator);
     } else if (clickedButton.classList.contains('equals')) {
@@ -44,6 +44,17 @@ allButtons.addEventListener('click', function(event) {
             display.textContent += '=';
 
             operate();  
+        }
+        //consecutive equals operation
+        if (clickedButton.classList.contains('equals') && result !== '') {
+            firstNumber = result;
+            currentOperator = currentOperator;
+            secondNumber = result;
+            
+            operate();
+
+            updateDisplay();
+ 
         }
     } else if (clickedButton.classList.contains('clear')) {
         clear();
@@ -83,8 +94,6 @@ allButtons.addEventListener('click', function(event) {
         }
     }
 });
-
-
 
 // Function to update the display with the current numbers and operator
 function updateDisplay() {
@@ -143,11 +152,13 @@ function operate() {
         result = parseFloat(firstNumber) / parseFloat(secondNumber);
     }
 
-    // Update the display
+    // Update the bottom display
     const outputDisplay = document.getElementById('output');
     outputDisplay.textContent = result;
     console.log('result:', result);
 }
+
+
     //TODO should be able to use several operations and get right answer (e.g. 12+7-5*3=42)
     //TODO should round answers with long decimals (e.g. 12.3 / 7.2 = 1.7)
     //TODO add error handling for divide by zero
