@@ -90,7 +90,7 @@ allButtons.addEventListener('click', function(event) {
     }
 });
 
-//TODO Display equal sign when pressed
+
 // Function to update the display with the current numbers and operator
 function updateDisplay() {
     // Define valid operators
@@ -127,26 +127,20 @@ function clear() {
 
 function clearEntry() {
     // If there's only one digit, set it to '0' and clear variables
-    if (input.value.length === 1) {
-        input.value = '0';
+    if (currentOperator === '') {
+        // If no operator is set, remove the last digit from the first number
         firstNumber = '';
-        currentOperator = '';
+        updateDisplay();
+    } else if (result !== '') {
+        clear();
+    } else if (secondNumber !== '') {
         secondNumber = '';
-    } else {
-        // Remove the last character
-        input.value = input.value.slice(0, -1);
-        if (currentOperator === '') {
-            // If no operator is set, remove the last digit from the first number
-            firstNumber = firstNumber.slice(0, -1);
-        } else {
-            // empty the operator variable when secondNumber is empty
-            if (secondNumber.length === 0) {
-                currentOperator = '';
-            }
-            // If an operator is set, remove the last digit from the second number
-            secondNumber = secondNumber.slice(0, -1);
-        } 
-    }
+        updateDisplay();
+    }  else {
+        // Clear operator if operator is set and secondNumber empty
+        currentOperator = '';
+        updateDisplay();
+    } 
 }
 
 //Execute operate fx when equals button is pressed
