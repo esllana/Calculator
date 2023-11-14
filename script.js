@@ -169,7 +169,6 @@ function operate() {
 
     //TODO should be able to use several operations and get right answer (e.g. 12+7-5*3=42)
     //TODO should round answers with long decimals (e.g. 12.3 / 7.2 = 1.7)
-    //TODO add error handling for divide by zero
     //TODO add error handling for invalid input
     //TODO add error handling for too many digits
 
