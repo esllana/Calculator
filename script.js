@@ -45,12 +45,12 @@ allButtons.addEventListener('click', function(event) {
         //consecutive equals operation
         if (equalsPressCount >= 2) { 
             firstNumber = result;
-            currentOperator = currentOperator;
             secondNumber = secondNumber;
-            
+
             operate();
-            updateDisplay();
-        }  
+            
+        } 
+        updateDisplay(); 
     } else if (clickedButton.classList.contains('clear')) {
         clear();
     } else if (clickedButton.classList.contains('clear-entry')) {
@@ -95,10 +95,23 @@ allButtons.addEventListener('click', function(event) {
 function updateDisplay() {
     // Define valid operators
     const validOperators = ['+', '-', '*', '/', 'x', '÷'];
-    display.value = validOperators.includes(currentOperator)
-        ? firstNumber + currentOperator + secondNumber // Display the numbers and operator if valid
-        : firstNumber + (equalsPressCount === 0 ? '' : '='); // Display only the numbers or with equals if the operator is not valid
+
+    if (validOperators.includes(currentOperator)) {
+        input.value = firstNumber + currentOperator + secondNumber; // Display the numbers and operator if valid
+    }  else {
+            input.value = firstNumber; // Display only the numbers if the operator is not valid and equalsPressCount is 0
+    }
+
+    //for appending equals sign
+    if (validOperators.includes(currentOperator) && 
+        firstNumber !== '' &&
+        secondNumber !== ''&&
+        equalsPressCount >= 1) {
+        
+        input.value = firstNumber + currentOperator + secondNumber + '=';
+    }
 }
+
 function clear() {
     // Clear all the variables
     firstNumber = '';
@@ -108,20 +121,20 @@ function clear() {
     equalsPressCount = 0;
 
     // Clear the display
-    display.value = '0';
+    input.value = '0';
     output.value = ' ';
 }
 
 function clearEntry() {
     // If there's only one digit, set it to '0' and clear variables
-    if (display.value.length === 1) {
-        display.value = '0';
+    if (input.value.length === 1) {
+        input.value = '0';
         firstNumber = '';
         currentOperator = '';
         secondNumber = '';
     } else {
         // Remove the last character
-        display.value = display.value.slice(0, -1);
+        input.value = input.value.slice(0, -1);
         if (currentOperator === '') {
             // If no operator is set, remove the last digit from the first number
             firstNumber = firstNumber.slice(0, -1);
