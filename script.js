@@ -152,7 +152,12 @@ function operate() {
     } else if (currentOperator === 'x' || currentOperator === '*') {
         result = parseFloat(firstNumber) * parseFloat(secondNumber);
     } else if (currentOperator === '÷' || currentOperator === '/') {
-        result = parseFloat(firstNumber) / parseFloat(secondNumber);
+        // Check if dividing by zero
+        if (parseFloat(secondNumber) === 0) {
+            result = 'Critical Error!';
+        } else {
+            result = parseFloat(firstNumber) / parseFloat(secondNumber);
+        }
     }
 
     // Update the bottom display
