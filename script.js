@@ -168,17 +168,17 @@ function operate() {
     }
     // Update the bottom display
     const outputDisplay = document.getElementById('output');
-    outputDisplay.textContent = result;
-    console.log('result:', result);
+    // Round the result to 1 decimal places
+    const roundedResult = Math.round(result * 10) / 10;
+    outputDisplay.textContent = roundedResult;
+    console.log('result:', roundedResult);
 }
 
 
     //TODO should be able to use several operations and get right answer (e.g. 12+7-5*3=42)
-    //TODO should round answers with long decimals (e.g. 12.3 / 7.2 = 1.7)
     //TODO add error handling for invalid input
-    //TODO add error handling for too many digits
 
-// Repeat the previous operation with the result as the first and second numbers
+
 
 
 
