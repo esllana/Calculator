@@ -3,12 +3,14 @@ const display = document.getElementById('input');
 const allButtons = document.getElementById('all-buttons');
 const buttonEquals = document.querySelector('.equals');
 
+
 // Create a variable to store the numbers
 let firstNumber = '';
 let currentOperator = '';
 let secondNumber = '';
 let result = '';
 let equalsPressCount = 0;
+let maxDigitLength = 12;
 
 
 //create an event listener on the container of the buttons
@@ -143,9 +145,14 @@ function clearEntry() {
     } 
 }
 
-//Execute operate fx when equals button is pressed
+// Execute operate fx when equals button is pressed
 function operate() {
-    if (currentOperator === '+') {
+    
+    if (firstNumber.length > maxDigitLength) {
+        result = 'Digit Limit Exceeded!';
+    } else if (secondNumber.length > maxDigitLength) {
+        result = 'Digit Limit Exceeded!';
+    } else if (currentOperator === '+') {
         result = parseFloat(firstNumber) + parseFloat(secondNumber);
     } else if (currentOperator === '-') {
         result = parseFloat(firstNumber) - parseFloat(secondNumber);
@@ -159,7 +166,6 @@ function operate() {
             result = parseFloat(firstNumber) / parseFloat(secondNumber);
         }
     }
-
     // Update the bottom display
     const outputDisplay = document.getElementById('output');
     outputDisplay.textContent = result;
