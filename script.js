@@ -97,7 +97,7 @@ function updateDisplay() {
     const validOperators = ['+', '-', '*', '/', 'x', '÷'];
 
     if (validOperators.includes(currentOperator)) {
-        input.value = firstNumber + currentOperator + secondNumber; // Display the numbers and operator if valid
+        input.value = firstNumber + ' ' + currentOperator + ' ' + secondNumber; // Display the numbers and operator if valid
     }  else {
             input.value = firstNumber; // Display only the numbers if the operator is not valid and equalsPressCount is 0
     }
@@ -108,7 +108,7 @@ function updateDisplay() {
         secondNumber !== ''&&
         equalsPressCount >= 1) {
         
-        input.value = firstNumber + currentOperator + secondNumber + '=';
+        input.value = firstNumber + ' ' + currentOperator + ' ' + secondNumber + '=';
     }
 }
 
