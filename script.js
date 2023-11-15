@@ -2,6 +2,7 @@
 const display = document.getElementById('input');
 const allButtons = document.getElementById('all-buttons');
 const buttonEquals = document.querySelector('.equals');
+const outputDisplay = document.getElementById('output');
 
 
 // Create a variable to store the numbers
@@ -109,7 +110,6 @@ function updateDisplay() {
         firstNumber !== '' &&
         secondNumber !== ''&&
         equalsPressCount >= 1) {
-        
         input.value = firstNumber + ' ' + currentOperator + ' ' + secondNumber + '=';
     }
 }
@@ -167,7 +167,6 @@ function operate() {
         }
     }
     // Update the bottom display
-    const outputDisplay = document.getElementById('output');
     // Round the result to 1 decimal places
     const roundedResult = Math.round(result * 10) / 10;
     outputDisplay.textContent = roundedResult;
@@ -178,9 +177,16 @@ function operate() {
     //TODO should be able to use several operations and get right answer (e.g. 12+7-5*3=42)
     //TODO add error handling for invalid input
 
-
-
-
-
-
 //add keyboard support
+document.addEventListener('keydown', function(event) {
+    const key = event.key.toLowerCase(); // Convert to lowercase
+    const validKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'shift',
+                       '+', '-', '*', '/', 'x', '÷', '=', 'enter', 'backspace', 'delete', '.'];
+
+    if (validKeys.includes(key)) {
+        const clickedButton = document.querySelector(`button[data-type="${key}"]`);
+        if (clickedButton) {
+            clickedButton.click();
+        }
+    }
+});
