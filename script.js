@@ -166,11 +166,17 @@ function operate() {
             result = parseFloat(firstNumber) / parseFloat(secondNumber);
         }
     }
-    // Update the bottom display
-    // Round the result to 1 decimal places
-    const roundedResult = Math.round(result * 10) / 10;
-    outputDisplay.textContent = roundedResult;
-    console.log('result:', roundedResult);
+    // Check if the result is a string message or a number
+    if (typeof result === 'number') {
+        // Update the bottom display with the rounded result
+        const roundedResult = Math.round(result * 10) / 10;
+        outputDisplay.textContent = roundedResult;
+        console.log('result:', roundedResult);
+    } else {
+        // Display the string message
+        outputDisplay.textContent = result;
+        console.log('result:', result);
+    }
 }
 
 
@@ -180,7 +186,7 @@ function operate() {
 //add keyboard support
 document.addEventListener('keydown', function(event) {
     const key = event.key.toLowerCase(); // Convert to lowercase
-    const validKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'shift',
+    const validKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'control',
                        '+', '-', '*', '/', 'x', '÷', '=', 'enter', 'backspace', 'delete', '.'];
 
     if (validKeys.includes(key)) {
