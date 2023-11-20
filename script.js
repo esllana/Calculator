@@ -100,7 +100,7 @@ function updateDisplay() {
     const validOperators = ['+', '-', '*', '/', 'x', '÷'];
 
     if (validOperators.includes(currentOperator)) {
-        input.value = firstNumber + ' ' + currentOperator + ' ' + secondNumber; // Display the numbers and operator if valid
+        input.value = firstNumber + ' ' + currentOperator + ' ' + secondNumber ; // Display the numbers and operator if valid
     }  else {
             input.value = firstNumber; // Display only the numbers if the operator is not valid and equalsPressCount is 0
     }
@@ -148,9 +148,7 @@ function clearEntry() {
 // Execute operate fx when equals button is pressed
 function operate() {
     
-    if (firstNumber.length > maxDigitLength) {
-        result = 'Digit Limit Exceeded!';
-    } else if (secondNumber.length > maxDigitLength) {
+    if (firstNumber.length > maxDigitLength || secondNumber.length > maxDigitLength) {
         result = 'Digit Limit Exceeded!';
     } else if (currentOperator === '+') {
         result = parseFloat(firstNumber) + parseFloat(secondNumber);
