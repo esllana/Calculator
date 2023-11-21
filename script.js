@@ -23,13 +23,13 @@ allButtons.addEventListener('click', function(event) {
         if (currentOperator === '') {
             // If no operator has been set, append digits to the first number
             firstNumber += digit;
+            console.log('firstNumber:', firstNumber);
         } else {
             // If an operator is set, append digits to the second number
             secondNumber += digit;
+            console.log('secondNumber:', secondNumber);
         }
-        updateDisplay();
-        console.log('firstNumber:', firstNumber);
-        console.log('secondNumber:', secondNumber);
+        updateDisplay();    
     } else if (clickedButton.classList.contains('operator')) {
         const operator = clickedButton.textContent;
         if (currentOperator === '') {
@@ -42,6 +42,10 @@ allButtons.addEventListener('click', function(event) {
             firstNumber = result;
             secondNumber = '';
             currentOperator = operator;
+            updateDisplay();
+            console.log('currentOperator:', currentOperator);
+            console.log('firstNumber:', firstNumber);
+            console.log('secondNumber:', secondNumber);
             
         } else {
             //replace the operator if it's already set
@@ -52,14 +56,7 @@ allButtons.addEventListener('click', function(event) {
     } else if (clickedButton.classList.contains('equals')) {
         operate(); 
         equalsPressCount++; 
-        const previousOperator = currentOperator;
         console.log('equalsPressCount:', equalsPressCount);
-        //consecutive equals operation and operator is not replaced
-        if (equalsPressCount >= 2 && currentOperator === previousOperator) {
-            firstNumber = result;
-            secondNumber = secondNumber;
-            operate();
-        }
 
         updateDisplay(); 
     } else if (clickedButton.classList.contains('clear')) {
@@ -189,7 +186,6 @@ function updateOutput() {
 }
 
 
-    //TODO should be able to use several operations and get right answer (e.g. 12+7-5*3=42)
     //TODO add error handling for invalid input
 
     
