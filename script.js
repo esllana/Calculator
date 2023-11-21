@@ -35,24 +35,32 @@ allButtons.addEventListener('click', function(event) {
         if (currentOperator === '') {
             // Set the operator if it's not already set
             currentOperator = operator;
-        } else {
-            // Replace the existing operator with the new operator
+        } else if (currentOperator != '' && secondNumber !='') {
+            //perform calculation and set the result as firstNumber, clear the secondNumber.
+            
+            operate();
+            firstNumber = result;
+            secondNumber = '';
             currentOperator = operator;
-        } 
+            
+        } else {
+            //replace the operator if it's already set
+            currentOperator = operator;
+        }
         updateDisplay(); 
         console.log('currentOperator:', currentOperator);
     } else if (clickedButton.classList.contains('equals')) {
         operate(); 
         equalsPressCount++; 
+        const previousOperator = currentOperator;
         console.log('equalsPressCount:', equalsPressCount);
-        //consecutive equals operation
-        if (equalsPressCount >= 2) { 
+        //consecutive equals operation and operator is not replaced
+        if (equalsPressCount >= 2 && currentOperator === previousOperator) {
             firstNumber = result;
             secondNumber = secondNumber;
-
             operate();
-            
-        } 
+        }
+
         updateDisplay(); 
     } else if (clickedButton.classList.contains('clear')) {
         clear();
@@ -164,10 +172,13 @@ function operate() {
             result = parseFloat(firstNumber) / parseFloat(secondNumber);
         }
     }
-    // Check if the result is a string message or a number
+    updateOutput();
+}
+
+function updateOutput() {
     if (typeof result === 'number') {
         // Update the bottom display with the rounded result
-        const roundedResult = Math.round(result * 10) / 10;
+        const roundedResult = Math.round(result * 100) / 100;
         outputDisplay.textContent = roundedResult;
         console.log('result:', roundedResult);
     } else {
@@ -181,6 +192,7 @@ function operate() {
     //TODO should be able to use several operations and get right answer (e.g. 12+7-5*3=42)
     //TODO add error handling for invalid input
 
+    
 //add keyboard support
 document.addEventListener('keydown', function(event) {
     const key = event.key.toLowerCase(); // Convert to lowercase
