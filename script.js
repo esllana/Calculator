@@ -42,7 +42,8 @@ allButtons.addEventListener('click', function(event) {
             firstNumber = result;
             secondNumber = '';
             currentOperator = operator;
-            updateDisplay();
+
+
             console.log('currentOperator:', currentOperator);
             console.log('firstNumber:', firstNumber);
             console.log('secondNumber:', secondNumber);
@@ -115,7 +116,7 @@ function updateDisplay() {
         firstNumber !== '' &&
         secondNumber !== ''&&
         equalsPressCount >= 1) {
-        input.value = firstNumber + ' ' + currentOperator + ' ' + secondNumber + '=';
+        input.value += '=';
     }
 }
 
