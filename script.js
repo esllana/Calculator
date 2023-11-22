@@ -183,12 +183,10 @@ function errorMessages() {
     if (currentOperator === '/' && firstNumber === 0 || secondNumber === '0') {
         result = 'Cannot divide by 0, bruh!';
     }
-    if (currentOperator !== '' && firstNumber === '') {
+    if (firstNumber === '' || secondNumber === '' || currentOperator === '') {
         result = 'Invalid Input!';
     }
-    if (currentOperator !== '' && secondNumber === '') {
-        result = 'Invalid Input!';
-    }
+
 }
 
 function updateOutput() {
@@ -217,3 +215,9 @@ document.addEventListener('keydown', function(event) {
         }
     }
 });
+
+//toggle pastel theme
+function switchColor(){
+    let element = document.body;
+    element.classList.toggle("pastel");
+}
