@@ -155,23 +155,40 @@ function clearEntry() {
 // Execute operate fx when equals button is pressed
 function operate() {
     
+    switch (currentOperator) {
+        case '+':
+            result = parseFloat(firstNumber) + parseFloat(secondNumber);
+            break;
+        case '-':
+            result = parseFloat(firstNumber) - parseFloat(secondNumber);
+            break;
+        case 'x':
+        case '*':
+            result = parseFloat(firstNumber) * parseFloat(secondNumber);
+            break;
+        case '÷':
+        case '/':
+            result = parseFloat(firstNumber) / parseFloat(secondNumber);
+            break;
+    }
+    errorMessages();
+    updateOutput();
+    
+}
+
+function errorMessages() {
     if (firstNumber.length > maxDigitLength || secondNumber.length > maxDigitLength) {
         result = 'Digit Limit Exceeded!';
-    } else if (currentOperator === '+') {
-        result = parseFloat(firstNumber) + parseFloat(secondNumber);
-    } else if (currentOperator === '-') {
-        result = parseFloat(firstNumber) - parseFloat(secondNumber);
-    } else if (currentOperator === 'x' || currentOperator === '*') {
-        result = parseFloat(firstNumber) * parseFloat(secondNumber);
-    } else if (currentOperator === '÷' || currentOperator === '/') {
-        // Check if dividing by zero
-        if (parseFloat(secondNumber) === 0) {
-            result = 'Critical Error!';
-        } else {
-            result = parseFloat(firstNumber) / parseFloat(secondNumber);
-        }
     }
-    updateOutput();
+    if (currentOperator === '/' && firstNumber === 0 || secondNumber === '0') {
+        result = 'Cannot divide by 0, bruh!';
+    }
+    if (currentOperator !== '' && firstNumber === '') {
+        result = 'Invalid Input!';
+    }
+    if (currentOperator !== '' && secondNumber === '') {
+        result = 'Invalid Input!';
+    }
 }
 
 function updateOutput() {
@@ -187,10 +204,6 @@ function updateOutput() {
     }
 }
 
-
-    //TODO add error handling for invalid input
-
-    
 //add keyboard support
 document.addEventListener('keydown', function(event) {
     const key = event.key.toLowerCase(); // Convert to lowercase
