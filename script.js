@@ -83,8 +83,9 @@ allButtons.addEventListener('click', function(event) {
         }
         updateDisplay();
     } else if (clickedButton.classList.contains('positive-negative')) {
-        if (result !== '') {
-            result = parseFloat(result * -1);
+        if (result !== '' && firstNumber !== '' && secondNumber !== '') {
+            secondNumber = parseFloat(secondNumber * -1);
+            updateDisplay();
             const outputDisplay = document.getElementById('output');
             outputDisplay.textContent = result;
         } else if (currentOperator === '') {
