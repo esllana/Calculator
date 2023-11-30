@@ -193,6 +193,33 @@ button.clear-entry:active {
 
 }
 
+.interface-buttons.pastel {
+    background-color: #c5a3ff;
+}
+
+.display-output.pastel {
+    background-color: #8857dd;
+}
+
+.display.pastel {
+    background-color: #c5a3ff;
+}
+
+.button.pastel {
+    color: #fce1e4;
+}
+
+.digits.pastel, 
+.operator.pastel, 
+.decimal.pastel, 
+.equals.pastel, 
+.positive-negative.pastel, 
+.clear.pastel, 
+.clear-entry.pastel {
+    color: #375a80;
+    background-color: #da94d4 ;
+}
+
 .footer.pastel{
     color: #6eb5ff;
 }
