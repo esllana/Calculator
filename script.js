@@ -180,7 +180,7 @@ function errorMessages() {
     if (firstNumber.length > maxDigitLength || secondNumber.length > maxDigitLength) {
         result = 'Digit Limit Exceeded!';
     }
-    if (currentOperator === '/' && firstNumber === 0 || secondNumber === '0') {
+    if (result === Infinity) {
         result = 'Cannot divide by 0, bruh!';
     }
     if (firstNumber === '' || secondNumber === '' || currentOperator === '') {
