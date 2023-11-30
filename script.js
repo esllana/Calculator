@@ -217,7 +217,22 @@ document.addEventListener('keydown', function(event) {
 });
 
 //toggle pastel theme
-function switchColor(){
-    let element = document.body;
-    element.classList.toggle("pastel");
+function switchTheme() {
+    let checkbox = document.getElementById('theme');
+    let footer = document.querySelector('.footer');
+    let slider = document.querySelector('.earthpastel');
+
+    if (checkbox.checked) {
+        // Switch to pastel theme
+        document.documentElement.style.setProperty('--background-color', '#fce1e4'); 
+        document.documentElement.style.setProperty('--text-color', '#fce1e4');
+        footer.classList.add('pastel');
+        slider.classList.add('pastel');
+    } else {
+        // Switch to default theme
+        document.documentElement.style.setProperty('--background-color', 'var(--brown)');
+        document.documentElement.style.setProperty('--text-color', 'var(--white)');
+        footer.classList.remove('pastel');
+        slider.classList.remove('pastel');
+    }
 }
