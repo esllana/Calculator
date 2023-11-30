@@ -221,6 +221,10 @@ function switchTheme() {
     let checkbox = document.getElementById('theme');
     let footer = document.querySelector('.footer');
     let slider = document.querySelector('.earthpastel');
+    let calculator = document.querySelector('.interface-buttons');
+    let calculatortop = document.querySelector('.display-output');
+    let calculatortop2 = document.querySelector('.display');
+    let buttons = document.querySelectorAll('.digits, .operator, .decimal, .equals, .clear, .clear-entry, .positive-negative', 'clear-entry', 'clear');
 
     if (checkbox.checked) {
         // Switch to pastel theme
@@ -228,11 +232,19 @@ function switchTheme() {
         document.documentElement.style.setProperty('--text-color', '#fce1e4');
         footer.classList.add('pastel');
         slider.classList.add('pastel');
+        calculator.classList.add('pastel');
+        calculatortop.classList.add('pastel');
+        calculatortop2.classList.add('pastel');
+        buttons.forEach(button => button.classList.add('pastel'));
     } else {
         // Switch to default theme
         document.documentElement.style.setProperty('--background-color', 'var(--brown)');
         document.documentElement.style.setProperty('--text-color', 'var(--white)');
         footer.classList.remove('pastel');
         slider.classList.remove('pastel');
+        calculator.classList.remove('pastel');
+        calculatortop.classList.remove('pastel');
+        calculatortop2.classList.remove('pastel');
+        buttons.forEach(button => button.classList.remove('pastel'));
     }
 }
